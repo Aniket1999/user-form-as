@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<!-- <p>user-form works!</p>-->
+<div class="row" style="width: 50%;position: absolute;left: 25%;width: 50%;top: 20%;">
+    <div class="container" style="border-style:solid; border-color:blue;">
+
+        <div>
+            <p class="help is-danger" *ngIf="check">{{message}}</p>
+        </div>
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control ">
+                <input class="input" type="name" [(ngModel)]="name" placeholder="name">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control ">
+                <input class="input" type="email" [(ngModel)]="email" placeholder="example@test.com">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Phone Number</label>
+            <div class="control has-icons-left">
+                <input class="input" type="number" [(ngModel)]="phone" placeholder="9999999999"
+                    style="padding-left: 3em;">
+                <span class="icon is-small is-left" style="padding-left: 5px;">
+                    <img class="manImg" src="../../assets/IN.png" />
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Date of Birth</label>
+            <div class="control">
+                <input class="input" type="date" [(ngModel)]="dob" name="bday">
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link" (click)=submitform()>Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
