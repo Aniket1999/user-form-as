@@ -33,7 +33,11 @@ export class UserFormComponent implements OnInit {
   constructor(private userservice: UserService, private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit() {
-
+    var msg = "user created";
+    let myItem = localStorage.getItem('message');
+    if (msg == myItem) {
+      this.router.navigate(['/dashboard']);
+    }
     var date = new Date();
     this.t_date = (this.datePipe.transform(date, "yyyy-MM-dd"));
     // console.log(Date.now() + " " + this.t_date.getTime());
@@ -66,18 +70,18 @@ export class UserFormComponent implements OnInit {
           }
           else
             if (this.agelimit(this.dob) < 18) {
-              this.message = "Sorry, You are not allowed for registration.";
+              this.message = "Sorry, You are not allowed for registration. Your age is below 18";
             }
             else {
-              this.check = false;
               this.userservice.register(this.email, this.name, this.phone, this.dob).subscribe(res => {
                 // alert(res);
                 if (res['message'] == "user exists") {
-                  alert("This email is already registered");
-                  this.router.navigate(['/user-form']);
+                  this.message = "This email is already registered";
 
                 }
                 else {
+                  this.check = false;
+                  localStorage.setItem('message', res['message']);
                   this.router.navigate(['/dashboard']);
                 }
               });
