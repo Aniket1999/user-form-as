@@ -3,3 +3,9 @@
     border: solid;
     border-color: black;
 }
+
+.logout{
+    padding-bottom: 3%; display: flex;
+    align-items: center;
+    justify-content: center;
+}
